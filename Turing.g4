@@ -11,6 +11,7 @@ statement
     | conditionalStmt
     | loopStmt
     | returnStmt
+    | variableDeclStmt
     ;
 
 assignmentStmt
@@ -33,6 +34,10 @@ loopStmt
 
 returnStmt
     : 'result' expression
+    ;
+
+variableDeclStmt
+    : 'var' ID ':' TYPENAME
     ;
 
 expression // comparison expression
@@ -67,6 +72,9 @@ functionCall
 /*
  Lexer rules
  */
+
+// Only one type in the assignment
+TYPENAME : 'int' ;
 
 // Couldn't find actual identifier description anywhere, sticking with this
 ID : [a-zA-Z][a-zA-Z0-9]* ;
