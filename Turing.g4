@@ -26,6 +26,7 @@ statement
     | returnStmt
     | variableDeclStmt
     | putStmt
+    | functionCall
     ;
 
 assignmentStmt
