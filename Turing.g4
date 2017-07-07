@@ -4,6 +4,10 @@ grammar Turing;
  Parser rules
  */
 
+file
+    : ((functionDecl | statement) NEWLINE)* EOF
+    ;
+
 // function declaration isn't considered a statement as it can't be nested
 functionDecl
     : 'function' ID '(' ( formalParam (',' formalParam)* )? ')' ':' TYPENAME NEWLINE
