@@ -21,6 +21,7 @@ statement
     | loopStmt
     | returnStmt
     | variableDeclStmt
+    | putStmt
     ;
 
 assignmentStmt
@@ -47,6 +48,10 @@ returnStmt
 
 variableDeclStmt
     : 'var' ID ':' TYPENAME
+    ;
+
+putStmt
+    : 'put' ( expression (',' expression)* )?
     ;
 
 expression // comparison expression
