@@ -129,5 +129,14 @@ namespace TuringTranslator
 			OutLine("}");
 			OutLine("else {");
 		}
+
+		public override void EnterPutStmt(TuringParser.PutStmtContext context)
+		{
+			foreach(var expression in context.expression()) {
+				OutLine($"Console.Write({PrintExpression(expression)});");
+			}
+
+			OutLine("Console.WriteLine();");
+		}
 	}
 }
