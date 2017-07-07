@@ -148,11 +148,22 @@ namespace TuringTranslator
 
 		public override void EnterPutStmt(TuringParser.PutStmtContext context)
 		{
-			foreach(var expression in context.expression()) {
-				OutLine($"Console.Write({PrintExpression(expression)});");
-			}
+			string toStringExpressions = String.Join(
+				" + ",
+				context.expression().Select(expression => $"({PrintExpression(expression)}).ToString()")
+			);
 
-			OutLine("Console.WriteLine();");
+			OutLine($"Console.WriteLine({toStringExpressions});");
+		}
+
+		public override void EnterFunctionCallStmt(TuringParser.FunctionCallStmtContext context)
+		{
+			string argumentString = String.Join(
+				",",
+				context.functionCall().expression().Select(expression => PrintExpression(expression))
+			);
+
+			OutLine($"{context.functionCall().ID().GetText()}({argumentString});");
 		}
 	}
 }
