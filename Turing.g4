@@ -9,7 +9,7 @@ options {
  */
 
 file
-    : NEWLINE* ((functionDecl | statement) NEWLINE)* EOF
+    : NEWLINE* ((functionDecl | statement) NEWLINE)* (functionDecl | statement)? EOF
     ;
 
 // function declaration isn't considered a statement as it can't be nested
