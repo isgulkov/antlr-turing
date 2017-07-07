@@ -4,8 +4,15 @@ grammar Turing;
  Parser rules
  */
 
-expression
+expression // comparison expression
+    : additiveExpr
+    | expression '=' additiveExpr
+    ;
+
+additiveExpr
     : multiplicativeExpr
+    | additiveExpr '+' multiplicativeExpr
+    | additiveExpr '-' multiplicativeExpr
     ;
 
 multiplicativeExpr
