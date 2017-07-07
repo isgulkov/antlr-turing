@@ -22,7 +22,6 @@ formalParam
 statement
     : assignmentStmt
     | conditionalStmt
-    | loopStmt
     | returnStmt
     | variableDeclStmt
     | putStmt
@@ -39,12 +38,6 @@ conditionalStmt
       ('else' NEWLINE
       (statement NEWLINE)*)?
       'end if'
-    ;
-
-loopStmt
-    : 'loop' NEWLINE
-      (statement NEWLINE)*
-      'end loop'
     ;
 
 returnStmt
