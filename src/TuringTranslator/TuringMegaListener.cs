@@ -123,5 +123,11 @@ namespace TuringTranslator
 		{
 			OutLine("}");
 		}
+
+		public override void EnterElse(TuringParser.ElseContext context)
+		{
+			OutLine("}");
+			OutLine("else {");
+		}
 	}
 }

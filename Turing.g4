@@ -39,9 +39,15 @@ assignmentStmt
 conditionalStmt
     : 'if' expression 'then' NEWLINE
       (statement NEWLINE)*
-      ('else' NEWLINE
+      (else NEWLINE
       (statement NEWLINE)*)?
       'end if'
+    ;
+
+// Rule is added so action can be taken in listener when this lexem is encountered
+// TODO: figure out how to do this properly
+else
+    : 'else'
     ;
 
 returnStmt
