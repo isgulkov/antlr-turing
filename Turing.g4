@@ -5,6 +5,15 @@ grammar Turing;
  */
 
 // function declaration isn't considered a statement as it can't be nested
+functionDecl
+    : 'function' ID '(' ( formalParam (',' formalParam)* )? ')' ':' TYPENAME NEWLINE
+      (statement NEWLINE)*
+      'end' ID // The two function IDs should be identical. Not sure if possible with CFGs
+    ;
+
+formalParam
+    : ID ':' TYPENAME
+    ;
 
 statement
     : assignmentStmt
