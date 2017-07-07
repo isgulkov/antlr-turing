@@ -29,7 +29,11 @@ statement
     | returnStmt
     | variableDeclStmt
     | putStmt
-    | functionCall
+    | functionCallStmt
+    ;
+
+functionCallStmt
+    : functionCall
     ;
 
 assignmentStmt
