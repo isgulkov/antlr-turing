@@ -5,7 +5,13 @@ grammar Turing;
  */
 
 expression
+    : multiplicativeExpr
+    ;
+
+multiplicativeExpr
     : primaryExpr
+    | multiplicativeExpr '*' primaryExpr
+    | multiplicativeExpr '/' primaryExpr
     ;
 
 primaryExpr
