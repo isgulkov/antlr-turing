@@ -75,7 +75,23 @@ namespace TuringTranslator
 
 		string PrintExpression(TuringParser.ExpressionContext context)
 		{
-			return context.GetText().Replace("=", "==");
+			string result = "";
+
+			bool InStringLiteral = false;
+
+			foreach(char c in context.GetText()) {
+				if(c == '"') {
+					InStringLiteral = !InStringLiteral;
+				}
+
+				result += c;
+
+				if(!InStringLiteral && c == '=') {
+					result += '=';
+				}
+			}
+
+			return result;
 		}
 
 		public override void EnterFunctionDecl(TuringParser.FunctionDeclContext context)
